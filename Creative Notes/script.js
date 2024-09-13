@@ -4,19 +4,6 @@ const save_btn = document.querySelector(".save-icon");
 const notes = document.querySelector(".widgets");
 const note_title = document.querySelector(".title input");
 const note_content = document.querySelector(".content textarea");
-const todoList_switch_button = document.querySelector('.todolist-icon');
-const backto_mainpage_btn = document.querySelector('.backToMainMenu-icon');
-// const deletenote_btn = document.querySelector(".note-widget .deleteNote-icon");
-
-backto_mainpage_btn.addEventListener('click', ()=> {
-  document.querySelector('.main-menu').style.display = 'block';
-  document.querySelector('.todoList-container').style.display = 'none';
-});
-
-todoList_switch_button.addEventListener('click', ()=> {
-  document.querySelector('.main-menu').style.display = 'none';
-  document.querySelector('.todoList-container').style.display = 'block';
-});
 
 notes.addEventListener("click", function (e) {
   if (
@@ -24,17 +11,15 @@ notes.addEventListener("click", function (e) {
     e.target.tagName === "H1" ||
     e.target.tagName === "P"
   ) {
-    console.log("notes fun run");
+    // console.log("notes fun run");
     document.querySelector(".main-menu").style.display = "none";
     document.querySelector(".editor-container").style.display = "block";
-
-    const note_widget = e.target.closest(".note-widget");
+    
     const h1text = note_widget.querySelector("h1").innerHTML;
     const text = note_widget.querySelector("p").innerHTML;
     note_title.value = h1text;
     note_content.value = text;
     note_title.classList.add("created");
-
     note_widget.classList.add("opened");
     current_note_title = note_widget.querySelector("h1").innerHTML;
     current_note_content = note_widget.querySelector("p").innerHTML;
@@ -103,63 +88,10 @@ notes.addEventListener("click", function (e) {
   }
 });
 
-// window.onbeforeunload = function () {
-//   return true;    // preventing page from loading
-// }
-
 // document.addEventListener("DOMContentLoaded", () => {
 //   notes.innerHTML = localStorage.getItem('myNotes');
 // });
 
-
-
-
-
-
-
-
-
-
-
-//  todoList-container scripting
-
-const list = document.querySelector(".list");
-const typingInput = document.querySelector(".typing-input");
-const submitBtn = document.querySelector(".typing-form .input-wrapper .icon");
-const typingForm = document.querySelector(".typing-form");
-
-function loadData() {
-  list.innerHTML = localStorage.getItem("Data");
-}
-
-function saveData() {
-  localStorage.setItem("Data", list.innerHTML);
-}
-
-list.addEventListener("click", function (e) {
-  if (e.target.tagName === "BUTTON" || e.target.tagName === "P") {
-    e.target.parentElement.classList.toggle("complete");
-  } else if (e.target.tagName === "SPAN") {
-    e.target.parentElement.remove();
-  }
-  // saveData();
-});
-
-function addTask() {
-  const div = document.createElement("div");
-  div.classList.add("list-item");
-  div.innerHTML = `<button></button><p>${typingInput.value}</p>                
-  <span class='icon bx bxs-trash' ></span> `;
-  list.appendChild(div);
-  // saveData();
-}
-
-typingForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  addTask();
-  typingForm.reset();
-});
-
-// loadData();
-
-// Make sure that the data stored and retrieved from local storage correctly 
+// window.onbeforeunload = function () {
+//     return true;    // preventing page from loading
+// }
