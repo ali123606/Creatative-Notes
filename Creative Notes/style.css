@@ -7,21 +7,25 @@
 
 
 :root {
+    --main-bg: #e5e8ee;
     --second-color: #0e121a;
     --primary-color: #171c26;
     --blue: #3B6BF7;
-    --pink: #0078d4;
-
+    --text-color: #3B404D;
+    --color: #272D39;
+    --color-red: #D82148;
+    --color-green: #00C897;
+    --color-purple: #8A39E1;
+    --button-clr: #000000e4;
 }
 
-/* main-menu styling */
 .main-menu {
     height: 100vh;
     background: var(--primary-color);
     color: #fff;
 }
 
-.main-menu .logo {
+/* .main-menu .logo {
     background: var(--second-color);
     padding: 10px;
     font-size: 1.1rem;
@@ -48,15 +52,16 @@
     border: none;
     outline: none;
     border-radius: 50px;
-}
+} */
 
 .main-menu .widgets {
     /* padding: 130px 20px 10px 10px; */
-    padding: 10px 20px 10px 40px;
+    padding: 20px 20px 10px 10px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     background: var(--primary-color);
+    user-select: none;
 }
 
 .main-menu .widgets .note-widget {
@@ -79,13 +84,13 @@
 
 .main-menu .widgets .note-widget h1 {
     font-family: "Montserrat", sans-serif;
-    color: var(--blue);
+    /* color: var(--blue); */
     font-size: 2rem;
 
 }
 
 .main-menu .widgets .note-widget p {
-    opacity: 50%;
+    opacity: 30%;
     margin-top: 7px;
     overflow: hidden;
     white-space: pre;
@@ -97,62 +102,43 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     bottom: 15px;
     right: 20px;
     height: 40px;
     width: 40px;
     background: var(--second-color);
+    font-size: 30px;
+    opacity: 30%;
+    transition: .5s;
+    /* background: var(--button-clr); */
 }
+
 
 .main-menu .add-newnote-icon {
+    border: 2px solid #ffffff43;
     position: fixed;
+    font-size: 40px;
+    bottom: 40px;
+    right: 25px;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    bottom: 50px;
-    right: 5px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--blue);
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1;
+    padding: 20px;
+    backdrop-filter: blur(50px);
 }
 
-
-/* Footer styling */
-
-.footer {
-    position: fixed;
-    width: 100%;
-    height: 40px;
-    bottom: 0;
-    background: var(--primary-color);
-    display: flex;
-    align-items: center;
-    color: white;
-    justify-content: center;
-    column-gap: 50%;
-    font-weight: 300;
-    font-size: 20px;
-}
-
-.footer .home-icon, .todolist-icon{
-    cursor: pointer;
-}
-
-.active {
-    color: var(--blue);
-}
 
 
 
 /* noteEdit-menu  css */
 
 .editor-container {
-    position: relative;
     background: var(--primary-color);
     height: 100vh;
     width: 100%;
@@ -170,16 +156,17 @@
     width: 100%;
     border: none;
     outline: none;
-    color: var(--main-bg);
-    font-size: 1.1rem;
+    font-weight: 800;
+    font-size: 30px;
     padding-right: 115px;
     letter-spacing: 2px;
+    color: white;
 }
 
 .editor-container .content {
     height: 100%;
     padding-top: 90px;
-    padding: 90px 10px 100px 10px;
+    padding: 90px 10px 20px 10px;
     width: 100%;
 }
 
@@ -194,164 +181,60 @@
     color: var(--main-bg);
     font-family: "Montserrat", sans-serif;
     letter-spacing: 1px;
+    font-size: 22px;
+    font-weight: 200;
 }
 
 .editor-container .save-icon, .close-icon {
     position: fixed;
     color: var(--main-bg);
     cursor: pointer;
-    background: var(--second-color);
-    height: 40px;
-    width: 40px;
+    height: auto;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    font-size: 1.3rem;
+    font-size: 38px;
+    top: 20px;
 }
 
 .editor-container .close-icon {
-    top: 20px;
-    right: 20px;
+    right: 15px;
 }
 
 .editor-container .save-icon {
-    top: 20px;
-    right: 66px;
+    right: 65px;
 }
 
+@media (min-width: 1000px) {
+    .main-menu .widgets .note-widget {
+        width: 49%;
+        height: 200px;
+    }
 
+    .main-menu .widgets .note-widget .deleteNote-icon:hover {
+        opacity: 100%;
+    }
 
+    .main-menu .widgets .note-widget {
+        transition: .2s linear;
+        transform: scale(1);
+    }
 
-/* to do list container styling */
+    .main-menu .widgets .note-widget:hover {
+        box-shadow: 0px 0px 3px var(--blue);
+        /* width: 50%;
+        height: 210px; */
+        z-index: 1;
+        transform: scale(.99);
+    }
+    
+    .main-menu .add-newnote-icon {
+        transition: .5s;
+    }
+    .main-menu .add-newnote-icon:hover {
+        border: 2px solid #ffffff;
+    }
 
-.todoList-container {
-    position: relative;
-}
-
-.list {
-    height: 100vh;
-    padding: 3rem 1rem 4rem;
-    overflow-y: auto;
-    background: var(--primary-color);
-}
-
-.todoList-container .backToMainMenu-icon {
-    position: fixed;
-    font-size: 1.5rem;
-    cursor: pointer;
-    width: 98%;
-    height: 30px;
-    background: var(--primary-color);
-    color: var(--main-bg);
-    top: 0;
-    left: 0;
-    box-shadow: 0px 1px 20px var(--primary-color);
-}
-
-.todoList-container .backToMainMenu-icon i {
-    position: fixed;
-    top: 4px;
-    left: 15px;
-}
-
-.list-item {
-    display: flex;
-    height: 20px;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 10px;
-    margin-bottom: 17px;
-    user-select: none;
-    color: var(--main-bg);
-}
-
-.list-item p {
-    flex: 1;
-}
-
-.list-item button {
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    align-items: center;
-    background-image: url(images/unchecked.png);
-    background-position: center;
-    background-size: fit;
-    background-size: cover;
-    border: none;
-    outline: none;
-}
-
-.list-item span {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    background: var(--second-color);
-    border-radius: 5px;
-    height: 20px;
-    width: 20px;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.726);
-    font-weight: 500;
-    color: var(--main-bg);
-}
-
-.list-item.complete button {
-    background-image: url(images/checked.png);
-}
-
-.list-item.complete p {
-    opacity: 50%;
-}
-
-.typing-area {
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    bottom: 0;
-    background: var(--primary-color);
-}
-
-.typing-area .input-wrapper {
-    background: var(--second-color);
-    margin: 2px 10px 10px 8px;
-    height: 100%;
-    display: flex;
-    border-radius: 50px;
-    height: 40px;
-    padding: 2px 16px;
-}
-
-.typing-area .input-wrapper::placeholder {
-    color: white;
-}
-
-.typing-area .input-wrapper .typing-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    flex: 1;
-    padding-right: 10px;
-    color: var(--main-bg);
-}
-
-.typing-area .input-wrapper .icon {
-    background: transparent;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-    transform: scale(0);
-    cursor: pointer;
-    color: var(--main-bg);
-}
-
-.typing-area .input-wrapper .typing-input:valid~.icon {
-    transform: scale(1);
-}
-
-span {
-    cursor: pointer;
-    opacity: 70%;
 }
